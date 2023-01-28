@@ -17,6 +17,25 @@ const Card = (makale) => {
   //   </div>
   // </div>
   //
+  const divCard = document.createElement('div');
+  divCard.className = 'card';
+  const divHeadline = document.createElement('div');
+  divHeadline.className = 'headline';
+  divHeadline.textContent = makale.anabaslik;
+  divCard.append(divHeadline);
+  const divAuthor = document.createElement('div');
+  divAuthor.className = 'author';
+  divCard.append(divAuthor);
+  const divImgContainer = document.createElement('div');
+  divImgContainer.className = 'img-container';
+  divAuthor.append(divImgContainer);
+  const imgYazar = document.createElement('img');
+  imgYazar.src = makale.yazarFoto;
+  divImgContainer.append(imgYazar);
+  const spanYazar = document.createElement('span');
+  spanYazar.textContent = `$(makale.yazarAdi) tarafindan`;
+  divAuthor.append(spanYazar);
+  return divCard;
 }
 
 const cardEkleyici = (secici) => {
