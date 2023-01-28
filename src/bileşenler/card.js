@@ -1,3 +1,4 @@
+import axios from "axios";
 const Card = (makale) => {
   // GÖREV 5
   // ---------------------
@@ -33,12 +34,12 @@ const Card = (makale) => {
   imgYazar.src = makale.yazarFoto;
   divImgContainer.append(imgYazar);
   const spanYazar = document.createElement('span');
-  spanYazar.textContent = `$(makale.yazarAdi) tarafindan`;
+  spanYazar.textContent = `${makale.yazarAdi} tarafindan`;
   divAuthor.append(spanYazar);
   return divCard;
 }
 
-const cardEkleyici = (secici) => {
+const cardEkleyici = async (secici) => {
   // GÖREV 6
   // ---------------------
   // Tek bağımsız değişkeni olarak bir css seçici alan bu fonksiyonu uygulayın.
@@ -47,6 +48,18 @@ const cardEkleyici = (secici) => {
   // Card bileşenini kullanarak yanıttaki her makale nesnesinden bir kart oluşturun.
   // Her cardı, fonksiyona iletilen seçiciyle eşleşen DOM'daki öğeye ekleyin.
   //
+  try {
+    const secilen = document.querySelector(secici);
+    const response = await axios.get('http://localhost:5001/api/makaleler');
+    console.log(response)
+    const makaleler = response.data.makaleler;
+    for (let konu in makaleler) {
+      makaleler[konu].forEach(element => secilen.append(Card(element)));
+    }
+
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export { Card, cardEkleyici }
