@@ -56,7 +56,6 @@ const cardEkleyici = async (secici) => {
     for (let konu in makaleler) {
       makaleler[konu].forEach(element => secilen.append(Card(element)));
     }
-
   } catch (error) {
     console.log(error);
   }
