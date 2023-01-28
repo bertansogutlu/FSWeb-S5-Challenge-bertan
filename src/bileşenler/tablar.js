@@ -13,6 +13,15 @@ const Tablar = (konu) => {
   //   <div class="tab">teknoloji</div>
   // </div>
   //
+  const divTopics = document.createElement('div');
+  divTopics.className = 'topics';
+  konu.forEach(element => {
+    const newDiv = document.createElement('div');
+    newDiv.className = 'tab';
+    newDiv.textContent = element;
+    divTopics.append(newDiv);
+  });
+  return divTopics;
 }
 
 const tabEkleyici = (secici) => {
