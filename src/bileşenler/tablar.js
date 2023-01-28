@@ -1,3 +1,4 @@
+import axios from "axios";
 const Tablar = (konu) => {
   // GÖREV 3
   // ---------------------
@@ -24,7 +25,7 @@ const Tablar = (konu) => {
   return divTopics;
 }
 
-const tabEkleyici = (secici) => {
+const tabEkleyici = async (secici) => {
   // GÖREV 4
   // ---------------------
   // Tek argümanı olarak bir css seçici alan bu işlevi uygulayın.
@@ -32,6 +33,15 @@ const tabEkleyici = (secici) => {
   // Yanıtın içindeki konu dizisini bulun ve Tablar bileşenini kullanarak tabları oluşturun.
   // Tabları, fonksiyona iletilen seçiciyle eşleşen DOM'daki öğeye ekleyin.
   //
+  try {
+    const secilen = document.querySelector(secici);
+    const response = await axios.get('http://localhost:5001/api/konular');
+    const konu = response.data.konular;
+    const tablar = Tablar(konu);
+    secilen.append(tablar);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export { Tablar, tabEkleyici }
