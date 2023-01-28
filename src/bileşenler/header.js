@@ -37,7 +37,7 @@ const headerEkleyici = (secici) => {
 
   // İPUCU: querySelector bir string alabilir (bknz: querySelector("#wrapper")) 
   // fakat aynı zamanda bir değişken de alabilir (bknz: querySelector(secici))
-  const header = Header('baslik', 'tarih', 'yazi');
+  const header = Header('Teknoloji Zamani', '5 Şubat 1992', 'Bertan Söğütlü');
   const secilen = document.querySelector(secici);
   secilen.append(header);
 }
