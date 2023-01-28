@@ -36,6 +36,9 @@ const Card = (makale) => {
   const spanYazar = document.createElement('span');
   spanYazar.textContent = `${makale.yazarAdi} tarafindan`;
   divAuthor.append(spanYazar);
+  divCard.addEventListener('click',(event) => {
+    console.log(divHeadline.textContent);
+  });
   return divCard;
 }
 
